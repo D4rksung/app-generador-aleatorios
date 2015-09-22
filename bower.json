@@ -1,0 +1,25 @@
+{
+  "name": "app-generador-aleatorios",
+  "version": "0.0.0",
+  "authors": [
+    "Marcel Amado <marcel@amado.pe>"
+  ],
+  "description": "App para generar y realizar pruebas a una poblacion de numeros aleatorios",
+  "keywords": [
+    "aleatorio",
+    "generador",
+    "uniformidad",
+    "independencia"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#1.1.0"
+  }
+}
