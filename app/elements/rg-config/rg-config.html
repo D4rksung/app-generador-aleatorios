@@ -15,7 +15,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <dom-module id="rg-config">
   <template>
     <paper-material elevation="1" animated="true">
-      <paper-dropdown-menu id="metodo" label="Metodo" selectedItemLabel="{{opciones.metodo}}">
+      <paper-dropdown-menu id="metodo" label="Metodo">
         <paper-menu class="dropdown-content" >
           <template is="dom-repeat"
                     items="{{metodos}}"
@@ -47,6 +47,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         }
       },
       _generate: function(){
+        this.opciones.metodo = this.$.metodo.selectedItemLabel;
         this.fire('generate-numbers',{opciones: this.opciones});
       },
       _reset: function () {

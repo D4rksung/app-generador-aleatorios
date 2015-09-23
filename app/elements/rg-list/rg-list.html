@@ -18,12 +18,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         display: block;
       }
     </style>
-
+<paper-material elevation="1">
     <template is="dom-repeat"
             items="{{aleatorios}}"
             as="aleatorio">
       <rg-item aleatorio="{{aleatorio}}"></rg-item>
     </template>
+</paper-material>
   </template>
   <script>
     Polymer({

@@ -33,12 +33,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       properties: {
         ejecucionAleatoria: {
           type: Object,
-          readOnly: true,
+          value:{},
           notify:true
         }
       },
       generateNumbers:function(e){
-        this.ejecucionAleatoria = generarNumerosAleatorios(e.detail.options);
+        this.ejecucionAleatoria = generarNumerosAleatorios(e.detail.opciones);
       }
     });
   </script>

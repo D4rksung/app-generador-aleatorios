@@ -5,9 +5,10 @@ function generarNumerosAleatorios(opciones){
     result.numerosAleatorios = [];
     if(opciones && opciones.metodo){
         var mapNumerosAleatorios = {};
-        for(var i=0;i<size;i++){
-            var raiz = i!=0?numerosAleatorios[i-1].xi:opciones.raiz;
-            var aleatorio = opcion.metodo == 'Congruencial' ? generarNACongruencial(raiz,opciones):generarNACuadradoMedio(raiz,opciones);
+        var cantidad = opciones.cantidad;
+        for(var i=0;i<cantidad;i++){
+            var raiz = i!=0?result.numerosAleatorios[i-1].xi:opciones.raiz;
+            var aleatorio = opciones.metodo == 'Congruencial' ? generarNACongruencial(raiz,opciones):generarNACuadradoMedio(raiz,opciones);
             if(Object.keys(aleatorio).length>0){
                 aleatorio.idx = i;
                 aleatorio.raiz = raiz;
@@ -27,8 +28,8 @@ function generarNACongruencial(raiz,opciones){
         var c = parseInt(opciones.c);
         var m = parseInt(opciones.m);
         var d = parseInt(opciones.d);
-        aleatorio.peq=(a*aleatorio.raiz)+c;
-        aleatorio.xi=aleatorio.feq%m;
+        aleatorio.peq=(a*raiz)+c;
+        aleatorio.xi=aleatorio.peq%m;
         aleatorio.ri=(Math.round((aleatorio.xi/m)*Math.pow(10,d))/Math.pow(10,d)).toFixed(d);
     }
     return aleatorio;
