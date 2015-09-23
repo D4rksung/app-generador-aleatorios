@@ -1,0 +1,29 @@
+{
+  "name": "app-generador-aleatorios",
+  "version": "0.0.0",
+  "description": "App para generar y realizar pruebas a una poblacion de numeros aleatorios",
+  "main": "app/index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/D4rksung/app-generador-aleatorios.git"
+  },
+  "keywords": [
+    "aleatorio",
+    "generador",
+    "uniformidad",
+    "independencia"
+  ],
+  "author": "Marcel Amado <marcel@amado.pe>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/D4rksung/app-generador-aleatorios/issues"
+  },
+  "homepage": "https://github.com/D4rksung/app-generador-aleatorios#readme",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-browserify": "^0.5.1"
+  }
+}
