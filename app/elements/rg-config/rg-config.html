@@ -1,0 +1,57 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD styles license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../bower_components/iron-icons/av-icons.html">
+<link rel="import" href="../elements.html"/>
+
+<dom-module id="rg-config">
+  <template>
+    <paper-material elevation="1" animated="true">
+      <paper-dropdown-menu id="metodo" label="Metodo" selectedItemLabel="{{opciones.metodo}}">
+        <paper-menu class="dropdown-content" >
+          <template is="dom-repeat"
+                    items="{{metodos}}"
+                    as="metodo">
+            <paper-item>{{metodo}}</paper-item>
+          </template>
+        </paper-menu>
+      </paper-dropdown-menu>
+      <paper-input id="cantidad" label="Cantidad" value="{{opciones.cantidad}}"></paper-input>
+      <paper-input id="raiz" label="Raiz (X0)" value="{{opciones.raiz}}"></paper-input>
+      <paper-input id="decimales" label="Decimales" value="{{opciones.d}}"></paper-input>
+      <paper-input id="paramB" label="Elemento Multiplicativo (a)" value="{{opciones.a}}"></paper-input>
+      <paper-input id="paramA" label="Elemento Aditivo (c)" value="{{opciones.c}}"></paper-input>
+      <paper-input id="modulo" label="Modulo (m)" value="{{opciones.m}}"></paper-input>
+      <paper-icon-button id="generar" icon="av:play-arrow" on-tap="_generate"></paper-icon-button>
+      <paper-icon-button id="resetear" icon="av:replay" on-tap="_reset"></paper-icon-button>
+    </paper-material>
+  </template>
+  <script>
+    Polymer({
+      is: 'rg-config',
+      ready:function(){
+        this.metodos = ['Congruencial','Cuadrado Medio'];
+      },
+      properties: {
+        opciones: {
+          type:Object,
+          value:{}
+        }
+      },
+      _generate: function(){
+        this.fire('generate-numbers',{opciones: this.opciones});
+      },
+      _reset: function () {
+        this.opciones = {};
+      }
+    });
+  </script>
+</dom-module>

@@ -19,10 +19,28 @@
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<link rel="apple-touch-icon-precomposed" href="apple-touch-icon.png">
 
+    <link rel="stylesheet" href="styles/main.css"/>
+
 	<!-- Web Components -->
-	<script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+	<script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+	<link rel="import" href="elements/elements.html"/>
+
+	<!-- Fonts -->
+	<link href='https://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
 </head>
-<body unresolved>
-	
+<body unresolved class="fullbleed layout vertical">
+<paper-drawer-panel>
+	<paper-header-panel drawer>
+
+	</paper-header-panel>
+	<paper-header-panel class="flex" main>
+		<paper-toolbar>
+			<div>Bienvenido</div>
+		</paper-toolbar>
+		<div class="content">
+			<rg-view></rg-view>
+		</div>
+	</paper-header-panel>
+</paper-drawer-panel>
 </body>
 </html>
