@@ -8,8 +8,8 @@ Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 -->
 
-<link rel="import" href="..\..\bower_components/polymer/polymer.html">
-
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../bower_components/paper-item/paper-item.html">
 <dom-module id="cm-table">
   <template>
     <style>
@@ -17,23 +17,50 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         display: block;
       }
     </style>
-    <div>Hello from <span>{{foo}}</span></div>
+    <template is="dom-repeat"
+    items="[[rows]]"
+    as="row">
+    <paper-item>
+      <template is="dom-repeat"
+      items="[[columns]]"
+      as="column">
+        <span class$="[[_getColumnWidth(column.width)]]">[[_getValue(row,column)]]</span>  
+      </template>
+    </paper-item>
+    </template>
   </template>
   <script>
-  (function() {
-    'use strict';
-
     Polymer({
       is: 'cm-table',
 
       properties: {
-        foo: {
-          type: String,
-          value: 'cm-table',
-          notify: true
+        rows: {
+          type: Array,
+          value: [{
+            'test':'abc',
+            'test2':'abcdef'
+          },
+          {
+            'test':'hij',
+            'test2':'klmn'
+          }
+          ]
+        },
+        columns: {
+          type: Array,
+          value: [{'key':'test','width':5},{'key':'test2','width':6}]
         }
+      },
+      _getValue:function(row,column){
+        return row[column.key];
+      },
+      _getColumnWidth:function(width){
+        var style = 'flex'
+        if(width){         
+          return style+'-'+width;
+        }
+        return style;
       }
-    });
-  })();
+    })
   </script>
 </dom-module>

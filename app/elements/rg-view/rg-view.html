@@ -10,6 +10,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="import" href="../../../bower_components/polymer/polymer.html">
 <link rel="import" href="../rg-config/rg-config.html"/>
+<link rel="import" href="../../../bower_components/firebase-element/firebase-collection.html">
 <dom-module id="rg-view">
   <template>
     <style>
@@ -22,7 +23,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
     </style>
     <div class="content">
-      <rg-config on-generate-numbers="generateNumbers"></rg-config>
+          <firebase-collection location="https://scorching-torch-6955.firebaseio.com/"
+    data="{{fbEjecucionesAleatorias}}" on-firebase-value="_firebaseLoaded"></firebase-collection>
+      <rg-config opciones="{{ejecucionAleatoria.opciones}}" on-generate-numbers="generateNumbers" on-reset-generator="resetGenerator" on-save-data="saveData"></rg-config>
       <rg-list aleatorios="{{ejecucionAleatoria.numerosAleatorios}}"></rg-list>
     </div>
   </template>
@@ -33,12 +36,22 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       properties: {
         ejecucionAleatoria: {
           type: Object,
-          value:{},
+          value:{opciones:{}},
           notify:true
         }
       },
       generateNumbers:function(e){
-        this.ejecucionAleatoria = generarNumerosAleatorios(e.detail.opciones);
+        this.ejecucionAleatoria = generarNumerosAleatorios(this.ejecucionAleatoria.opciones);
+      },
+      resetGenerator:function(){
+        this.ejecucionAleatoria = {opciones:{}}
+      },
+      saveData:function(){
+        this.push('ejecucionesAleatorias',this.ejecucionAleatoria);
+      },
+      _firebaseLoaded: function() {
+        this.ejecucionesAleatorias = this.fbEjecucionesAleatorias;
+        this.linkPaths('fbEjecucionesAleatorias', 'ejecucionesAleatorias');
       }
     });
   </script>

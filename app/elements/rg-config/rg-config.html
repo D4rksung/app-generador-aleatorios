@@ -32,6 +32,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <paper-input id="modulo" label="Modulo (m)" value="{{opciones.m}}"></paper-input>
       <paper-icon-button id="generar" icon="av:play-arrow" on-tap="_generate"></paper-icon-button>
       <paper-icon-button id="resetear" icon="av:replay" on-tap="_reset"></paper-icon-button>
+      <paper-icon-button id="guardar" icon="save" on-tap="_save"></paper-icon-button>
     </paper-material>
   </template>
   <script>
@@ -43,15 +44,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       properties: {
         opciones: {
           type:Object,
-          value:{}
+          notify: true
         }
       },
       _generate: function(){
         this.opciones.metodo = this.$.metodo.selectedItemLabel;
-        this.fire('generate-numbers',{opciones: this.opciones});
+        this.fire('generate-numbers',{});
       },
       _reset: function () {
         this.opciones = {};
+        this.fire('reset-generator',{});
+      },
+      _save: function(){
+        this.fire('save-data',{});
       }
     });
   </script>

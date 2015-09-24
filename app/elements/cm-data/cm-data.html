@@ -9,31 +9,32 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <link rel="import" href="../../../bower_components/polymer/polymer.html">
-
-<dom-module id="ut-view">
+<link rel="import" href="../../../bower_components/firebase-element/firebase-collection.html">
+<dom-module id="cm-data">
   <template>
     <style>
       :host {
         display: block;
       }
     </style>
-    <div>Hello from <span>{{foo}}</span></div>
+    <firebase-collection location="{{location}}"
+    data="{{fbEjecucionesAleatorias}}" on-firebase-value="_firebaseLoaded"></firebase-collection>
   </template>
   <script>
-  (function() {
-    'use strict';
-
     Polymer({
-      is: 'ut-view',
+      is: 'cm-data',
 
       properties: {
-        foo: {
-          type: String,
-          value: 'ut-view',
-          notify: true
+        ejecucionesAleatorias: {
+          type: Array,
+          notify:true,
+          value: []
         }
+      },
+      _firebaseLoaded: function() {
+        this.ejecucionesAleatorias = this.fbEjecucionesAleatorias;
+        this.linkPaths('fbEjecucionesAleatorias', 'todos');
       }
     });
-  })();
   </script>
 </dom-module>
